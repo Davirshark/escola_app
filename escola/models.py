@@ -12,7 +12,8 @@ class Aluno (models.Model):
         return self.nome
 
 class Curso(models.Model):
-    NIVEL = (('B', 'Básico'), 
+    NIVEL = (
+    ('B', 'Básico'), 
     ('I', 'Intermediário'), 
     ('A', 'Avançado'))
     codigo_curso = models.CharField(max_length = 10)
@@ -23,7 +24,8 @@ class Curso(models.Model):
         return self.descricao
 
 class Matricula(models.Model):
-    PERIODO = (('M', 'Matutino'), 
+    PERIODO = (
+    ('M', 'Matutino'), 
     ('V', 'Vespertino'), 
     ('N', 'Noturno'))
     aluno = models.ForeignKey(Aluno, on_delete = models.CASCADE)
