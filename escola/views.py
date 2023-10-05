@@ -39,5 +39,5 @@ class ListaAlunosMatriculados(generics.ListAPIView):
         queryset = Matricula.objects.filter(curso_id = self.kwargs['pk'])
         return queryset
     serializer_class = ListaAlunosMatriculadosSerializer
-    authentication_classes = [BasicAuthentication]
+    authentication_classes = [BasicAuthentication]  
     permission_classes = [IsAuthenticated]
