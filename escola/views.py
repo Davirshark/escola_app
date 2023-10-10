@@ -1,6 +1,6 @@
 from rest_framework import viewsets, generics
 from escola.models import Aluno, Curso, Matricula
-from .serializer import AlunoSerializer, CursoSerializer, MatriculaSerializer, ListaMatriculasAlunoSerializer,ListaAlunosMatriculadosSerializer
+from .serializer import AlunoSerializer, CursoSerializer, MatriculaSerializer, AlunoPorCpfSerializer, ListaMatriculasAlunoSerializer,ListaAlunosMatriculadosSerializer
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 
@@ -39,5 +39,13 @@ class ListaAlunosMatriculados(generics.ListAPIView):
         queryset = Matricula.objects.filter(curso_id = self.kwargs['pk'])
         return queryset
     serializer_class = ListaAlunosMatriculadosSerializer
+    authentication_classes = [BasicAuthentication]  
+    permission_classes = [IsAuthenticated]
+
+class AlunoPorCpfViewSet(generics.ListAPIView):
+    def get_queryset(self):
+        queryset = Aluno.objects.filter(cpf = self.kwargs['pk'])
+        return queryset
+    serializer_class = AlunoPorCpfSerializer
     authentication_classes = [BasicAuthentication]  
     permission_classes = [IsAuthenticated]
