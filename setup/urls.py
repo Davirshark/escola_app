@@ -19,6 +19,7 @@ from escola.views import AlunosViewsSet, AlunoPorCpfViewSet, CursosViewsSet, Mat
 from rest_framework import routers
 from clientes.views import ClientesViewSet
 
+
 router = routers.DefaultRouter()
 router.register('alunos', AlunosViewsSet, basename='Alunos')
 router.register('cursos', CursosViewsSet, basename='Cursos')
@@ -28,10 +29,11 @@ router.register('clientes', ClientesViewSet)
 
 
 
+
 urlpatterns = [
     path('admin', admin.site.urls),
     path('', include(router.urls)),
     path('aluno/<int:pk>/matriculas', ListaMatriculasAluno.as_view()),
     path('curso/<int:pk>/matriculas', ListaAlunosMatriculados.as_view()),
-    path('alunosPorCpf/<int:pk>', AlunoPorCpfViewSet.as_view())
+    path('alunoPorCpf/<int:pk>', AlunoPorCpfViewSet.as_view()),
 ]

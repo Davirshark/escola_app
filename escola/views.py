@@ -3,6 +3,8 @@ from escola.models import Aluno, Curso, Matricula
 from .serializer import AlunoSerializer, CursoSerializer, MatriculaSerializer, AlunoPorCpfSerializer, ListaMatriculasAlunoSerializer,ListaAlunosMatriculadosSerializer
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
+from django.conf.urls import url
+from rest_framework_swagger.views import get_swagger_view
 
 class AlunosViewsSet(viewsets.ModelViewSet):
     """Exibindo todos os alunos"""
@@ -47,5 +49,5 @@ class AlunoPorCpfViewSet(generics.ListAPIView):
         queryset = Aluno.objects.filter(cpf = self.kwargs['pk'])
         return queryset
     serializer_class = AlunoPorCpfSerializer
-    authentication_classes = [BasicAuthentication]  
-    permission_classes = [IsAuthenticated]
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]  

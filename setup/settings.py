@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework', 
     'escola',
     'clientes',
-    'django_filters'
+    'django_filters',
+    'rest_framework_swagger'
 ]
 
 MIDDLEWARE = [
