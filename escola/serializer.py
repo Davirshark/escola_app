@@ -36,4 +36,7 @@ class AlunoPorCpfSerializer(serializers.ModelSerializer):
     aluno_cpf= serializers.ReadOnlyField(source = 'aluno.cpf')
     class Meta:
         model = Aluno
-        fields = ['aluno_cpf','nome', 'celular']
+        fields = ['aluno_cpf','nome']
+
+
+        
